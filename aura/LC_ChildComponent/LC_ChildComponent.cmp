@@ -1,0 +1,50 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+    
+    <!-- attributes START -->
+    <aura:attribute name="childFootballerDetails" type="Object"/>
+    <!-- attribute END -->
+    
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- handler END -->
+    
+    <!-- event START -->
+    <aura:registerEvent name="myFirstEvent" type="c:LC_UpdateParentFootballDetail_Event"/>
+    <!-- event END -->
+    
+    <lightning:card title="Child Component"
+                    iconName="action:user">
+        <div class="slds-m-around_medium">
+            <table>
+                <tr>
+                    <td>
+                        First name : {!v.childFootballerDetails.firstname}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last name : {!v.childFootballerDetails.lastname}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country : {!v.childFootballerDetails.country}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Field Number : {!v.childFootballerDetails.fieldNum}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="slds-m-around_medium">
+            <lightning:button variant="brand" 
+                              label="Update parent with child" 
+                              title="Update parent with child" 
+                              onclick="{!c.sendInfoToParent}" />
+        </div>
+    </lightning:card>
+</aura:component>

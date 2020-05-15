@@ -1,0 +1,44 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+    
+    <!-- attributes START -->
+    <aura:attribute name="footballerDetails" type="Object"/>
+    <!-- attribute END -->
+    
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="myFirstEvent" event="c:LC_UpdateParentFootballDetail_Event" action="{!c.handleMyFirstEvent}"/>
+    <!-- handler END -->
+    
+    <lightning:card title="Parent Component"
+                    iconName="action:preview">
+        <div class="slds-m-around_medium">
+            <table>
+                <tr>
+                    <td>
+                        First name : {!v.footballerDetails.firstname}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last name : {!v.footballerDetails.lastname}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country : {!v.footballerDetails.country}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Field Number : {!v.footballerDetails.fieldNum}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="slds-m-around_x-large slds-border_top slds-border_bottom slds-border_left slds-border_right">
+            <c:LC_ChildComponent/>
+        </div>
+        
+    </lightning:card>
+</aura:component>
