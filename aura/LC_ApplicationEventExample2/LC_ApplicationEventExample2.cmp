@@ -1,0 +1,21 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+    
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- handler END -->
+    
+    <!-- event START -->
+    <aura:registerEvent name="LC_MyApplication_Event" type="c:LC_MyApplication_Event"/>
+    <!-- event END -->
+    
+    <lightning:card title="Neighbour Component 2"
+                    iconName="standard:events">
+        <div class="slds-m-around_x-large" align="center">
+            <lightning:button variant="destructive" 
+                              label="Change Neighbour 1 colour" 
+                              title="Change Neighbour 1 colour" 
+                              onclick="{!c.changeNeighbourColour}" />
+        </div>
+    </lightning:card>
+</aura:component>

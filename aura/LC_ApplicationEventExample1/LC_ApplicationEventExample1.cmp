@@ -1,0 +1,30 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+    
+    <!-- attributes START -->
+    <aura:attribute name="colourCounter" type="Integer" default="0"/>
+    <aura:attribute name="divColor" type="String" default="background-color:#2967cc"/>
+    <aura:attribute name="colourList" type="String[]" default="['#cc2941', '#8132a8', '#29ccb4', '#29cc62', '#ccbe29', '#cc5429', '#2967cc']"/>
+    <!-- attribute END -->
+    
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:LC_MyApplication_Event" action="{!c.changeColor}"/>
+    <!-- handler END -->
+    
+    
+    <lightning:card title="Neighbour Component 1"
+                    iconName="standard:endorsement">
+        <div class="slds-m-around_x-large" style="{!v.divColor}">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+    </lightning:card>
+</aura:component>
