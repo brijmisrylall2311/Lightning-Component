@@ -1,0 +1,41 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+    
+    <!-- attributes START -->
+    <aura:attribute name="aNumber" type="Integer" default="0"/>
+    <aura:attribute name="aCounter" type="Integer" default="0"/>
+    <aura:attribute name="anAverage" type="Decimal" default="0"/>
+    <aura:attribute name="aSum" type="Integer" default="0"/>
+    <!-- attribute END -->
+    
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- handler END -->
+    
+    <lightning:card title="Average Calculator"
+                    iconName="action:fallback">
+        <div class="slds-m-around_medium">          
+            <div class="slds-m-bottom_medium">
+                <b>Counter : {!v.aCounter}</b>
+            </div>
+            <div class="slds-m-bottom_medium">
+                <b>Sum : {!v.aSum}</b>
+            </div>
+            <div class="slds-m-bottom_medium">
+                <b>Average : {!v.anAverage}</b>
+            </div>
+            <div class="slds-m-bottom_medium">
+                <lightning:input type="number"
+                                 label="Insert number" 
+                                 required="true" 
+                                 value="{!v.aNumber}" />
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning:button variant="brand" 
+                                  label="Add" 
+                                  title="Add" 
+                                  onclick="{!c.addSum}" />
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>
