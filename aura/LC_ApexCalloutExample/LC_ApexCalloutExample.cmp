@@ -1,0 +1,65 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes"
+                controller="AP_LightningComponentExampleClass">
+
+    <!-- attributes START -->
+    <aura:attribute name="carList" type="Object[]"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    <!-- attribute END -->
+    
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- handler END -->
+
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="mySpinner">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </div>
+    </aura:if>
+    
+    <lightning:card title="Apex Callout Example"
+                    iconName="action:user">
+        <div class="slds-m-around_medium">
+            <div class="slds-m-around_medium" align="center">
+                <lightning:button variant="brand" 
+                                  label="Query my cars" 
+                                  title="Query my cars" 
+                                  onclick="{!c.retriveCarDetails}" />
+            </div>
+            <div class="slds-m-around_medium">
+                <table>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Model
+                        </th>
+                        <th>
+                            Colour
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                    <aura:iteration items="{!v.carList}" var="aCar">
+                        <tr>
+                            <td>
+                                {!aCar.Name}
+                            </td>
+                            <td>
+                                {!aCar.Model__c}
+                            </td>
+                            <td>
+                                {!aCar.Colour__c}
+                            </td>
+                            <td>
+                                {!aCar.Price__c}
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </table>
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>	
