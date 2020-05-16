@@ -18,7 +18,7 @@
     </aura:if>
     
     <lightning:card title="Apex Callout Example"
-                    iconName="action:user">
+                    iconName="action:bug">
         <div class="slds-m-around_medium">
             <div class="slds-m-around_medium" align="center">
                 <lightning:button variant="brand" 
