@@ -69,7 +69,7 @@
             </div>
             <div class="slds-m-bottom_medium">
                 <lightning:input type="number"
-                                 label="Generate table of random values" 
+                                 label="Number of random records to generate" 
                                  required="true" 
                                  value="{!v.numberToCreate}" />
             </div>
