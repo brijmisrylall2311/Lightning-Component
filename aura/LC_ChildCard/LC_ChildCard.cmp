@@ -1,0 +1,48 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+
+    <!-- attributes START -->
+    <aura:attribute name="infoName" type="String"/>
+    <aura:attribute name="infoGender" type="String"/>
+    <aura:attribute name="infoAddress" type="String"/>
+    <aura:attribute name="infoIdentifier" type="String"/>
+    <!-- attribute END -->
+
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="myFirstEvent" event="c:LC_UpdateParentFootballDetail_Event" action="{!c.handleMyFirstEvent}"/>
+    <!-- handler END -->
+
+    <!-- event START -->
+    <aura:registerEvent name="deleteInfoEvent" type="c:LC_DeleteInfo_Event"/>
+    <!-- event END -->
+
+    <div aura:id="mainContainer" class="slds-m-around_medium slds-border_right slds-border_left slds-border_top slds-border_bottom">
+        <div class="slds-m-around_medium">
+            <table>
+                <tr>
+                    <td>
+                        <b>Name : </b> {!v.infoName}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Gender : </b> {!v.infoGender}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Address : </b> {!v.infoAddress}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="slds-m-around_medium">
+            <lightning:buttonIcon iconName="utility:delete" 
+                                variant="border-filled" 
+                                alternativeText="Delete" 
+                                title="Delete"
+                                onclick="{!c.deleteInfo}"/>
+        </div>
+    </div>
+</aura:component>	

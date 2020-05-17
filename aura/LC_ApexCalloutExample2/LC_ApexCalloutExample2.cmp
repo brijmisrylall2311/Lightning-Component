@@ -1,0 +1,97 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes"
+                controller="AP_FIRSTCLASS">
+
+    <!-- attributes START -->
+    <aura:attribute name="detailInfo" type="Object"/>
+    <aura:attribute name="detailInfoList" type="Object[]"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    <aura:attribute name="numberToCreate" type="Integer" default="0"/>
+    <aura:attribute name="tableCounter" type="Integer" default="0"/>
+    <aura:attribute name="disableAddToTable" type="Boolean" default="true"/>
+    <!-- attribute END -->
+    
+    <!-- handler START -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.detailInfoList}" action="{!c.updateCounter}"/>
+    <aura:handler name="deleteInfoEvent" event="c:LC_DeleteInfo_Event" action="{!c.deleteInfoDetails}"/>
+    <!-- handler END -->
+
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="mySpinner">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </div>
+    </aura:if>
+
+    <lightning:card title="Apex Callout Example"
+                    iconName="action:user">
+        <div class="slds-m-around_medium">
+            <div class="slds-m-around_medium">
+                <table>
+                    <tr>
+                        <th>
+                            Details
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name : {!v.detailInfo.myName}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Gender : {!v.detailInfo.myGender}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address : {!v.detailInfo.myAddress}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="slds-m-around_medium">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning:button variant="brand" 
+                                            label="Generate 1 random value" 
+                                            title="Generate 1 random value" 
+                                            onclick="{!c.generateARandom}" />
+                    </div>
+                    <div class="slds-col">
+                        <lightning:button variant="brand" 
+                                            label="Add to table" 
+                                            title="Add to table"
+                                            disabled="{!v.disableAddToTable}" 
+                                            onclick="{!c.addToTable}" />
+                    </div>
+                </div>
+            </div>
+            <div class="slds-m-bottom_medium">
+                <lightning:input type="number"
+                                 label="Generate table of random values" 
+                                 required="true" 
+                                 value="{!v.numberToCreate}" />
+            </div>
+            <div class="slds-m-bottom_medium">
+                <lightning:button variant="brand" 
+                                  label="Generate table of random values" 
+                                  title="Generate table of random values" 
+                                  onclick="{!c.generateTable}" />
+            </div>
+        </div>
+        <div class="slds-m-around_medium">
+            <b>
+                Number of records displayed : {!v.tableCounter}
+            </b>
+        </div>
+        <aura:iteration items="{!v.detailInfoList}" var="detail">
+            <div class="slds-m-around_medium">
+                <c:LC_ChildCard infoName="{!detail.myName}"
+                                infoGender="{!detail.myGender}"
+                                infoAddress="{!detail.myAddress}"
+                                infoIdentifier="{!detail.myId}"/>
+            </div>
+        </aura:iteration>
+    </lightning:card>
+</aura:component>
