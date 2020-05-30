@@ -1,0 +1,26 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+    
+    <!--Platform event listener component START-->
+    <lightning:empApi aura:id="empApi" />
+    <!--Platform event listener component END-->
+
+    <!--HANDLERS START-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--HANDLERS END-->
+
+    <!--ATTRIBUTES START-->
+    <aura:attribute name="platformResultsList" type="Object[]" />
+    <aura:attribute name="eventChannel" type="String" default="/event/Platform_Event_Example__e"/>
+    <!--ATTRIBUTES END-->   
+                
+
+    <lightning:card title="Listening to Platform Event"
+                    iconName="action:user">
+        <aura:iteration items="{!v.platformResultsList}" var="pfe">
+            <div class="slds-m-around_medium" align="center">
+                <b>>>>> Platform event captured !!</b>
+            </div>
+        </aura:iteration>
+    </lightning:card>
+</aura:component>

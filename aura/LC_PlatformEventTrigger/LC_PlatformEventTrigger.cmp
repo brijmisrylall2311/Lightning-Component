@@ -1,0 +1,26 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes"
+                controller="AP_PlatformEventUtils">
+               
+    <!-- attributes START -->
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    <!-- attribute END -->
+
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="mySpinner">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </div>
+    </aura:if>
+
+    <lightning:card title="Creating Platform Event"
+                    iconName="action:lead_convert">
+        <div class="slds-m-around_large">        
+            <div class="slds-m-around_medium" align="center">
+                <lightning:button variant="brand" 
+                                label="Create Platform Event" 
+                                title="Create Platform Event" 
+                                onclick="{!c.createPlatformEvent}" />
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>
