@@ -1,0 +1,47 @@
+<aura:component access="GLOBAL" 
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes"
+                controller="AP_Continuation">
+
+    <!-- attributes START -->
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    <aura:attribute name="myResponse" type="Object"/>
+    <aura:attribute name="showResponse1" type="Boolean" default="false"/>
+    <aura:attribute name="showResponse2" type="Boolean" default="false"/>
+    <aura:attribute name="showResponse3" type="Boolean" default="false"/>
+    <aura:attribute name="disableButton" type="Boolean" default="false"/>
+    <!-- attribute END -->
+
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="mySpinner">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </div>
+    </aura:if>
+    
+    <lightning:card title="Continuation callout example"
+                    iconName="custom:custom15">
+        <div class="slds-m-around_medium">
+            <div class="slds-m-around_medium" align="center">
+                <lightning:button variant="brand" 
+                                  label="Make webservice callout" 
+                                  title="Make webservice callout" 
+                                  onclick="{!c.makeCallout}" 
+                                  disabled="{!v.disableButton}" />
+            </div>
+            <div class="slds-m-around_medium">
+                <aura:if isTrue="{!v.showResponse1}">
+                    <b>Response 1 : </b> {!v.myResponse.Continuation1}
+                </aura:if>
+            </div>
+            <div class="slds-m-around_medium">
+                <aura:if isTrue="{!v.showResponse2}">
+                    <b>Response 2 : </b> {!v.myResponse.Continuation2}
+                </aura:if>
+            </div>
+            <div class="slds-m-around_medium">
+                <aura:if isTrue="{!v.showResponse3}">
+                    <b>Response 3 : </b> {!v.myResponse.Continuation3}
+                </aura:if>
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>	
